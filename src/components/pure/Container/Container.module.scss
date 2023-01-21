@@ -1,0 +1,48 @@
+@mixin common($background-color: var(--background), $color: var(--text)) {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 0;
+}
+
+.primary {
+  @include common;
+}
+
+.gap {
+  &-large {
+    gap: 3.2rem;
+  }
+
+  &-medium {
+    gap: 2.4rem;
+  }
+
+  &-small {
+    gap: 1.6rem;
+  }
+
+  &-none {
+    gap: 0;
+  }
+}
+
+.padding {
+  &-large {
+    padding: 3.2rem;
+  }
+
+  &-medium {
+    padding: 1.6rem;
+  }
+
+  &-small {
+    padding: 0.8rem;
+  }
+
+  &-none {
+    padding: 0;
+  }
+}

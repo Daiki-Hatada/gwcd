@@ -1,0 +1,68 @@
+$radio-diameter: 18px;
+$primary-background: color-mix(var(--primary), #fff, 4%);
+
+@mixin common($color: var(--primary), $background-color: $primary-background) {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+
+  input {
+    display: none;
+
+    & + span {
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: $background-color;
+      }
+
+      &::before {
+        display: flex;
+        width: $radio-diameter;
+        height: $radio-diameter;
+        margin-right: 8px;
+        content: '';
+        background-color: #fff;
+        border: 1.5px solid var(--subtext);
+        border-radius: 50%;
+      }
+    }
+
+    &:checked + span {
+      background-color: $primary-background;
+
+      &::before {
+        background-color: $color;
+        border-color: $color;
+        box-shadow: inset 0 0 0 3.5px #fff;
+      }
+    }
+  }
+}
+
+@mixin outline($color: var(--primary)) {
+  > input {
+    & + span {
+      width: 10rem;
+      height: 3rem;
+      padding-left: 1rem;
+      box-shadow: inset 0 0 0 1px var(--gray-lighter);
+    }
+
+    &:checked + span {
+      box-shadow: inset 0 0 0 1px $color;
+    }
+  }
+}
+
+.primary {
+  @include common($color: var(--primary), $background-color: $primary-background);
+}
+
+.primary.outline {
+  @include outline($color: var(--primary));
+}

@@ -1,0 +1,101 @@
+@mixin common($background-color: var(--background), $color: var(--text), $width: var(--width-size)) {
+  $padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  textarea {
+    width: $width;
+    padding: $padding;
+    font-size: 1rem;
+    color: $color;
+    resize: none;
+    background-color: $background-color;
+    border: 0.06rem solid var(--input-border);
+    border-radius: 0.25rem;
+
+    &:focus {
+      border: 0.06rem solid var(--primary);
+    }
+
+    &::placeholder {
+      color: var(--input-placeholder);
+    }
+  }
+
+  div .textbox {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    flex-grow: 0;
+    align-items: flex-start;
+    align-self: stretch;
+    order: 0;
+    font-size: 1rem;
+    color: $color;
+    background-color: var(--input-background);
+    border: 0.06rem solid var(--input-border);
+    border-radius: 0.25rem;
+
+    textarea {
+      width: calc($width - $padding * 2);
+      margin: 0.5rem 0.5rem 0.125rem;
+      background-color: var(--input-background);
+      border: none;
+    }
+
+    hr {
+      position: relative;
+      align-items: center;
+      width: calc($width - $padding * 2);
+      margin: 0.125rem 0.5rem 0.25rem;
+      border: none;
+      border-top: 0.06rem dotted var(--input-border);
+    }
+
+    .children {
+      position: relative;
+      align-items: center;
+      width: calc($width - $padding * 2);
+      margin: 0.125rem 0.5rem 0.5rem;
+      border: none;
+    }
+  }
+}
+
+.primary {
+  @include common(var(--input-background), var(--text), 30rem);
+}
+
+.error {
+  @include common(var(--input-background), var(--text), 30rem);
+
+  div .textbox {
+    border: 0.1rem solid var(--input-error);
+    border-radius: 0.3rem;
+
+    &:focus {
+      border: 0.1rem solid var(--input-error);
+      outline: 0;
+    }
+  }
+
+  textarea {
+    border: 0.1rem solid var(--input-error);
+    border-radius: 0.3rem;
+
+    &:focus {
+      border: 0.1rem solid var(--input-error);
+      outline: 0;
+    }
+  }
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 2;
+  color: rgb(16 16 16);
+}

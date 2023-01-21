@@ -1,0 +1,49 @@
+.root {
+  color: #fff;
+  background-color: var(--deep-blue);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.right-contents {
+  margin-right: 0.5rem;
+}
+
+.pc-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.sp-layout {
+  display: none;
+
+  .icon {
+    cursor: pointer;
+  }
+}
+
+.side-menu {
+  display: none;
+  color: #fff;
+}
+
+@media screen and (max-width: 950px) {
+  .pc-layout {
+    display: none;
+  }
+
+  .sp-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+  }
+
+  .side-menu {
+    display: initial;
+  }
+}

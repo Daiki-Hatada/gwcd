@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  list-style: none;
+}
+
+%common {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  color: var(--text);
+}
+
+.active {
+  @extend %common;
+
+  color: var(--primary);
+}
+
+.inactive {
+  @extend %common;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--gray-light);
+  }
+}

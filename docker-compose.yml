@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  next:
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    image: next-boilerplate
+    container_name: next_app_container
+    ports:
+      - '3000:3000'

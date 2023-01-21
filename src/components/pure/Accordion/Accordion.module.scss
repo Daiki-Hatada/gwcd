@@ -1,0 +1,41 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.right-icon-wrapper {
+  justify-content: space-between;
+}
+
+.checkbox {
+  display: none;
+}
+
+.icon {
+  transition: transform 0.3s;
+}
+
+.checkbox:checked + .label > .icon {
+  transform: rotate(180deg);
+}
+
+.checkbox:checked ~ .content {
+  padding: 1rem 3rem;
+}
+
+.checkbox:not(:checked) + .label > .icon {
+  transform: rotate(90deg);
+}
+
+.checkbox:not(:checked) ~ .content {
+  height: 0;
+  overflow-y: hidden;
+}

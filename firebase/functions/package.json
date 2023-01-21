@@ -1,0 +1,36 @@
+{
+  "name": "@next/functions",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "yarn build && firebase emulators:start --only functions",
+    "shell": "yarn build && firebase functions:shell",
+    "start": "yarn shell",
+    "deploy": "firebase deploy --only functions",
+    "deploy:development": "firebase use development && firebase deploy --only functions",
+    "deploy:staging": "firebase use staging && firebase deploy --only functions",
+    "deploy:production": "firebase use production && firebase deploy --only functions",
+    "deploy-with-cred:development": "export GOOGLE_APPLICATION_CREDENTIALS='../service-account-development.json' && yarn deploy:development",
+    "deploy-with-cred:staging": "export GOOGLE_APPLICATION_CREDENTIALS='../service-account-staging.json' && yarn deploy:staging",
+    "deploy-with-cred:production": "export GOOGLE_APPLICATION_CREDENTIALS='../service-account-production.json' && yarn deploy:production",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "lib/firebase/functions/src/index.js",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "algoliasearch": "^4.14.2",
+    "firebase-admin": "^11.0.1",
+    "firebase-functions": "^4.2.0",
+    "zod": "^3.17.3"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0",
+    "firebase-tools": "^11.21.0",
+    "typescript": "4.9.4"
+  },
+  "private": true
+}

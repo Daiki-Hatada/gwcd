@@ -1,0 +1,7 @@
+Dockerfile
+docker-compose.yml
+.dockerignore
+.gitignore
+*.log
+.env.example
+firebase

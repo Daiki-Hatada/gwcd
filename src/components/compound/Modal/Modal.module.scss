@@ -1,0 +1,39 @@
+@use 'src/styles/z_index';
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: z_index.$modal-back-drop;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(#000, 0.6);
+}
+
+.modal {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  z-index: z_index.$modal;
+  max-width: 100vw;
+  transform: translateX(-50%);
+}
+
+.small {
+  width: 25rem;
+}
+
+.large {
+  width: 50rem;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  cursor: pointer;
+}

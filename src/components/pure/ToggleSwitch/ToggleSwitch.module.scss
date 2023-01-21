@@ -1,0 +1,51 @@
+$width: 3.75rem;
+$height: 2rem;
+$padding: 0.25rem;
+$toggle-radius: $height - $padding * 2;
+$transition: 0.3s;
+
+@mixin common($color: var(--primary)) {
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+
+  .input {
+    display: none;
+
+    & + span.toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: $width;
+      height: $height;
+      background-color: var(--background);
+      border: 1px solid $color;
+      border-radius: $height;
+      transition: $transition;
+
+      &::before {
+        position: absolute;
+        left: $width - $toggle-radius - $padding;
+        width: $toggle-radius;
+        height: $toggle-radius;
+        content: '';
+        background: $color;
+        border-radius: $toggle-radius;
+        transition: $transition ease-out;
+      }
+    }
+
+    &:checked + span.toggle {
+      background-color: $color;
+
+      &::before {
+        left: $padding;
+        background: var(--background);
+      }
+    }
+  }
+}
+
+.primary {
+  @include common($color: var(--primary));
+}

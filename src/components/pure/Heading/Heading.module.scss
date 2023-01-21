@@ -1,0 +1,77 @@
+%common {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+  color: #000;
+}
+
+.larger,
+%larger {
+  @extend %common;
+
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 3rem;
+}
+
+.large,
+%large {
+  @extend %common;
+
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 2.75rem;
+}
+
+.medium,
+%medium {
+  @extend %common;
+}
+
+.small,
+%small {
+  @extend %common;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+}
+
+.smaller,
+%smaller {
+  @extend %common;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.margined-larger {
+  @extend %larger;
+
+  margin: 0 0 64px;
+}
+
+.margined-large {
+  @extend %larger;
+
+  margin: 0 0 56px;
+}
+
+.margined-medium {
+  @extend %medium;
+
+  margin: 0 0 48px;
+}
+
+.margined-small {
+  @extend %small;
+
+  margin: 0 0 40px;
+}
+
+.margined-smaller {
+  @extend %smaller;
+
+  margin: 0 0 24px;
+}

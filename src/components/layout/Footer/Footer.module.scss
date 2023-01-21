@@ -1,0 +1,25 @@
+.root {
+  padding: 2rem;
+  color: #fff;
+  background-color: var(--deep-blue);
+}
+
+.sp-layout {
+  display: none;
+}
+
+.policy {
+  padding-top: 3.5rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  .pc-layout {
+    display: none;
+  }
+
+  .sp-layout {
+    display: block;
+  }
+}

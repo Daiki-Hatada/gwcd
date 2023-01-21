@@ -1,0 +1,92 @@
+@use 'colors';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+button {
+  appearance: none;
+  cursor: pointer;
+  background: rgb(0 0 0 / 0%);
+}
+
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  /*
+  * Colors
+  */
+  --brand: #{colors.$brand};
+  --brand-complementary: #{colors.$brand-complementary};
+  --brand-darker: #{colors.$brand-darker};
+  --background: #{colors.$background};
+  --background-complementary: #{colors.$background-complementary};
+  --selected-background: #{colors.$selected-background};
+  --border: #{colors.$gray-dark};
+  --gray-darker: #{colors.$gray-darker};
+  --gray-dark: #{colors.$gray-dark};
+  --gray-light: #{colors.$gray-light};
+  --gray-lighter: #{colors.$gray-lighter};
+  --text: #{colors.$text};
+  --text-complementary: #{colors.$text-complementary};
+  --subtext: #{colors.$subtext};
+  --success: #{colors.$success};
+  --attention: #{colors.$attention};
+  --wait: #{colors.$wait};
+  --error: #{colors.$error};
+  --primary: #{colors.$primary};
+  --secondary: #{colors.$secondary};
+  --chat-background: #{colors.$chat-background};
+  --form-background: #{colors.$form-background};
+  --banner-background: #{colors.$banner-background};
+  --banner-text: #{colors.$banner-text};
+  --link: #{colors.$link};
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /*
+  * Colors
+  */
+  --brand: #{colors.$brand};
+  --brand-complementary: #{colors.$brand-complementary};
+  --brand-darker: #{colors.$brand-darker};
+  --background: #{colors.$background-complementary};
+  --background-complementary: #{colors.$background};
+  --selected-background: #{colors.$selected-background};
+  --border: #{colors.$gray-light};
+  --gray-darker: #{colors.$gray-lighter};
+  --gray-dark: #{colors.$gray-light};
+  --gray-light: #{colors.$gray-dark};
+  --gray-lighter: #{colors.$gray-darker};
+  --text: #{colors.$text-complementary};
+  --text-complementary: #{colors.$text};
+  --subtext: #{colors.$subtext};
+  --success: #{colors.$success};
+  --attention: #{colors.$attention};
+  --wait: #{colors.$wait};
+  --error: #{colors.$error};
+  --primary: #{colors.$primary};
+  --secondary: #{colors.$secondary};
+  --chat-background: #{colors.$chat-background};
+  --form-background: #{colors.$form-background};
+  --link: #{colors.$link};
+}

@@ -1,0 +1,54 @@
+.root {
+  position: relative;
+  flex-shrink: 0;
+  max-width: fit-content;
+  height: 100vh;
+  overflow-x: hidden;
+  white-space: nowrap;
+  background-color: #000;
+  transition: 0.3s;
+}
+
+.open {
+  width: 18.25rem;
+}
+
+.title {
+  margin: 1.5rem 1rem 0.75rem;
+  font-weight: bold;
+  color: #7f7f7f;
+}
+
+.close {
+  width: 3.25rem;
+
+  .title {
+    display: none;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.icon {
+  flex-shrink: 0;
+  padding: 1rem;
+}
+
+.label {
+  user-select: none;
+}
+
+.button {
+  display: flex;
+  width: 100%;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--brand);
+  }
+}

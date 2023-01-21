@@ -1,0 +1,30 @@
+{
+  "name": "@next/firestore",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "@firebase/rules-unit-testing": "^2.0.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "firebase": "^9.8.1",
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.2",
+    "ts-node": "^10.7.0",
+    "typescript": "4.9.4"
+  },
+  "jest": {
+    "transform": {
+      "\\.ts": "ts-jest"
+    },
+    "testRegex": "src/__tests__/*/.*test.ts",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "testEnvironment": "node"
+  }
+}

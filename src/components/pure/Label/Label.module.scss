@@ -1,0 +1,24 @@
+%common {
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 2rem;
+}
+
+.outline {
+  @extend %common;
+
+  border: 1px solid;
+}
+
+.fill {
+  @extend %common;
+}
+
+.padding-default {
+  padding: 0.15rem 1.5rem;
+}
+
+.square {
+  border-radius: 0.25rem;
+}

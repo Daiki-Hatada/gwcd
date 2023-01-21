@@ -1,0 +1,14 @@
+.root {
+  padding: 1rem 4rem;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 1px;
+}
+
+// スマホの場合paddingを変更
+@media screen and (max-width: 768px) {
+  .root {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,17 @@
+/**
+* 指定行の三点リーダー省略スタイル.
+* @example
+* ``` someComponents.module.scss
+* @use 'src/components/common/CSS/Ellipsis'
+* .someComponents {
+*   @include ellipsis.line-clamp(4)
+* }
+* ```
+*/
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+}

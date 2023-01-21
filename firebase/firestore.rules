@@ -1,0 +1,64 @@
+rules_version = '2';
+
+// NOTE: Functions must be defiend within the context of `/databases`
+// to allow use of `get()`.
+service cloud.firestore {
+    match /databases/{database}/documents {
+
+        // General helper functions
+        function isAuthenticated() {
+            return request.auth != null;
+        }
+        function isAdministrator() {
+            return request.auth.token.admin == true;
+        }
+        function isOwn(uid) {
+            return request.auth.uid == uid;
+        }
+        function isValidRegistrationApplicationStatus(registrationApplication) {
+            return registrationApplication.status == 'pending';
+        }
+        function getAdministrator(uid) {
+            return get(/databases/$(database)/documents/administrators/$(uid));
+        }
+
+        // Body
+        // SEE: https://www.notion.so/randd-inc/a051eb18fc344bb1ba77563791b749e4
+        match /registrationApplications/{registrationApplicationId} {
+            allow create: if isOwn(registrationApplicationId) && isValidRegistrationApplicationStatus(request.resource.data);
+            allow list, update: if isAdministrator();
+            allow get: if isAdministrator() || isOwn(registrationApplicationId);
+        }
+        match /members/{memberId} {
+            allow get, list:if request.auth != null;
+            allow update: if isOwn(memberId);
+        }
+        match /articles/{_} {
+            allow get, list;
+        }
+        match /articleCategories/{_} {
+            allow get, list;
+        }
+        match /notices/{_} {
+            allow get, list;
+        }
+        match /administrators/{administratorId} {
+            allow get, list: if isAdministrator();
+            allow update: if
+                isAdministrator() &&
+                !request.resource.data.diff(resource.data).affectedKeys().hasAny(['email']) && //emailの変更は出来ない
+                (
+                    (isOwn(administratorId) && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role'])) || //自分のロールは変えない
+                    (!isOwn(administratorId) && getAdministrator(request.auth.uid).data.role == 'writer')//自分のものではない人をアップデートする際にロールを確認する
+                );
+        }
+        match /administratorInvitations/{_} {
+            allow get, list: if isAdministrator();
+            allow create: if  isAdministrator()
+            && getAdministrator(request.auth.uid).data.role == 'writer'; //TODO rootを追加する際、権限が自分以上であれば許可しないようにする
+            allow update: if
+                !request.resource.data.diff(resource.data).affectedKeys().hasAny(['email']) && //emailの変更は出来ない
+                getAdministrator(request.auth.uid).data.role == 'writer'; //TODO rootを追加する際、権限が自分以上であれば許可しないようにする
+        }
+    }
+}

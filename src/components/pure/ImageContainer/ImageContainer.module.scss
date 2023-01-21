@@ -1,0 +1,56 @@
+%common {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  transition: all 0.4s ease 0s;
+}
+
+%check-pattern-background {
+  background-color: var(--background);
+  background-image: linear-gradient(45deg, var(--gray-dark) 25%, transparent 25%, transparent 75%, var(--gray-dark) 75%),
+    linear-gradient(45deg, var(--gray-dark) 25%, transparent 25%, transparent 75%, var(--gray-dark) 75%);
+  background-position: 0 0, 4px 4px;
+  background-size: 8px 8px;
+}
+
+.larger {
+  @extend %check-pattern-background;
+
+  width: 80px;
+  height: 80px;
+}
+
+.large {
+  @extend %check-pattern-background;
+
+  width: 44px;
+  height: 44px;
+}
+
+.medium {
+  @extend %check-pattern-background;
+
+  width: 32px;
+  height: 32px;
+}
+
+.small {
+  @extend %check-pattern-background;
+
+  width: 24px;
+  height: 24px;
+}
+
+.circle {
+  @extend %common;
+
+  border-radius: 50%;
+}
+
+.square {
+  @extend %common;
+
+  border-radius: 0;
+}

@@ -1,0 +1,41 @@
+@mixin common($background-color: var(--background), $color: var(--text)) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none; /* †IE(Internet Explorer)†, Microsoft Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Google Chrome、Safari */
+  }
+
+  list-style: none;
+
+  button {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 300;
+    color: $color;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .active {
+    font-weight: 600;
+    border-bottom: 1px solid $color;
+  }
+
+  .inactive {
+    font-weight: 300;
+    cursor: pointer;
+  }
+}
+
+.primary {
+  @include common;
+}

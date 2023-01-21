@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "default": "gwcd-development",
+    "development": "gwcd-development",
+    "staging": "gwcd-development",
+    "production": "gwcd-development"
+  },
+  "targets": {},
+  "etags": {}
+}

@@ -1,0 +1,47 @@
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+    paths:
+      - firebase/functions/**
+
+name: Deploy Cloud Functions to Production Environment
+
+jobs:
+  deploy:
+    name: Deploy Cloud Functions
+    runs-on: ubuntu-latest
+    environment: production
+    if: ${{ github.event.pull_request.merged }} == true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Create environment file
+        working-directory: firebase/functions
+        run: |
+          echo "${{ secrets.CLOUD_FUNCTIONS_ENV_PRODUCTION }}" > .env.production
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install firebase-tools
+        run: npm install -g firebase-tools
+
+      - name: Install node modules
+        run: yarn
+
+      - name: Set up GCP authentication
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FILE_PRODUCTION }}
+
+      - name: Deploy
+        run: |
+          yarn functions deploy:production
